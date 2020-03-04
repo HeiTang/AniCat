@@ -177,15 +177,9 @@ def Download_m3u8(url , download_path , Anime_Unit_title):
     if unknow:
         raise BaseException("未找到對應的下載鏈接")
     else:
-        print("\033[11D\033[0m",end= "") 
-        print("\033[1;34mSuccess\033[0m",end= "")  # 藍色成功
-
-    merge_file(download_path , Anime_Unit_title)
+        merge_file(download_path , Anime_Unit_title)
 
 def merge_file(path , Anime_Unit_title):
-    print("\033[1;32mMerge\033[0m",end= "")  # 藍色成功
-    print("\033[5D\033[0m",end= "")
-
     os.chdir(path)
     count = len(os.listdir(path))
 
@@ -196,8 +190,8 @@ def merge_file(path , Anime_Unit_title):
 
     os.system('rm *.ts')  
     os.rename("new.tmp", Anime_Unit_title + ".mp4")
-
-    print("\033[1;34mSuccess\033[0m")  # 藍色成功
+    print("\033[11D\033[0m",end= "")
+    print("\033[1;34mSuccess    \033[0m")  # 藍色成功
 
 def Next_Page(url):
     try:
