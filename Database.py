@@ -57,7 +57,7 @@ def Create_DB(i):
 
         cursor.execute(sql, val)
         mydb.commit()    # 資料表内容若有更新，必須使用到該語句
-        print(cursor.rowcount, "紀錄插入成功。")  
+        # print(cursor.rowcount, "紀錄插入成功。")  
 
     if(count == 5):
       print("        ➠ \033[1;33m 更新完畢！ \033[0m")

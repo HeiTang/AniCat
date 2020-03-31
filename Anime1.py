@@ -13,7 +13,6 @@ from time import sleep
 # 設定 Header 
 headers = {
     "Accept": "*/*",
-    "Accept-Encoding": 'gzip, deflate, br',
     "Accept-Language": 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
     "DNT": "1",
     "Sec-Fetch-Mode": "cors",
@@ -222,27 +221,27 @@ if __name__ == '__main__':
     os.system('clear')  
     url_Anime = []
 
-    # print(
-    #     '''
-    #     #####################################
-    #     # If u can't search , plz update db #
-    #     #           Author:HeiTang          #            
-    #     #####################################
-    #     ''')
+    print(
+        '''
+        #####################################
+        # If u can't search , plz update db #
+        #           Author:HeiTang          #            
+        #####################################
+        ''')
 
-    # update_db = input("%8s\033[1;36mDo you want to update database ? (y/n) \033[0m" % " ")    
-    # if(update_db == "y"):
-    #     Database.Search_Max_id()
+    update_db = input("%8s\033[1;36mDo you want to update database ? (y/n) \033[0m" % " ")    
+    if(update_db == "y"):
+        Database.Search_Max_id()
 
-    # # print("\n")
+    # print("\n")
 
-    # search_id = input("%8s\033[1;36mDo you want to search anime id ? (y/n) \033[0m" % " ")   
-    # if(search_id == "y"):
-    #     Database.Search_Anime1_id()
+    search_id = input("%8s\033[1;36mDo you want to search anime id ? (y/n) \033[0m" % " ")   
+    if(search_id == "y"):
+        Database.Search_Anime1_id()
     
-    # id = input("%8sEnter ID : " % " ")
+    id = input("%8sEnter ID : " % " ")
 
-    id = 651
+    # id = 651
 
     url_Anime = "https://anime1.me?cat="+str(id)
 
@@ -260,33 +259,33 @@ if __name__ == '__main__':
     if not os.path.exists(download_path):
         os.mkdir(download_path)
 
-    # # 主要
-    # while True:
-    #     URL = []
-    #     ttitle = []
-    #     NextPage = str(False)
+    # 主要
+    while True:
+        URL = []
+        ttitle = []
+        NextPage = str(False)
         
-    #     # 回傳“子動漫標題(List)”、“子動漫URL(List)”
-    #     URL , ttitle = Anime_Groups(url_Anime)
-    #     # Loop 子動漫
-    #     for i in range(len(ttitle)):
-    #         print("%8s" % " "+ttitle[i] , end=" ", flush= True)
+        # 回傳“子動漫標題(List)”、“子動漫URL(List)”
+        URL , ttitle = Anime_Groups(url_Anime)
+        # Loop 子動漫
+        for i in range(len(ttitle)):
+            print("%8s" % " "+ttitle[i] , end=" ", flush= True)
             
-    #         URL[i] = Anime_Unit(URL[i])
-    #         if(URL[i].find(".m3u8") == -1):
-    #             print("\033[1;33mDownloading\033[0m",end= "", flush= True)  # 黃色下載中
-    #             Download_mp4(URL[i] , download_path , ttitle[i])
+            URL[i] = Anime_Unit(URL[i])
+            if(URL[i].find(".m3u8") == -1):
+                print("\033[1;33mDownloading\033[0m",end= "", flush= True)  # 黃色下載中
+                Download_mp4(URL[i] , download_path , ttitle[i])
                 
-    #         else:
-    #             print("\033[1;33mDownloading\033[0m",end= "", flush= True)  # 黃色下載中
-    #             Download_m3u8(URL[i] , download_path , ttitle[i])
+            else:
+                print("\033[1;33mDownloading\033[0m",end= "", flush= True)  # 黃色下載中
+                Download_m3u8(URL[i] , download_path , ttitle[i])
                 
                 
-    #     # 回傳“下頁狀態”、“下頁URL”
-    #     NextPage , url_Anime = Next_Page(url_Anime)
+        # 回傳“下頁狀態”、“下頁URL”
+        NextPage , url_Anime = Next_Page(url_Anime)
 
-    #     if(NextPage == str(False)):
-    #         break
+        if(NextPage == str(False)):
+            break
 
     print("\n%8s[備份階段]" % " ")
     
