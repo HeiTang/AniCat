@@ -173,8 +173,7 @@ def Download_m3u8(url , download_path , Anime_Unit_title):
             with open(os.path.join(download_path, c_fule_name), 'ab') as f:
                 f.write(res.content)
                 f.flush()
-                f.close()
-    os.system('rm .DS_Store') 
+                f.close() 
 
     if unknow:
         raise BaseException("未找到對應的下載鏈接")
@@ -286,9 +285,9 @@ if __name__ == '__main__':
 
         if(NextPage == str(False)):
             break
+    
+    os.system('rm .DS_Store')
 
     print("\n%8s[備份階段]" % " ")
-    
-    
     
     Upload.main(is_update_file_function=bool(True), update_drive_service_folder_name='Anime1', update_drive_service_name=None, update_file_path=download_path)
