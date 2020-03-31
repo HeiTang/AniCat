@@ -26,7 +26,7 @@ def update_file(service, update_drive_service_name, local_file_path, update_driv
     :param local_file_path: 本地端的位置
     :param local_file_name: 本地端的檔案名稱
     """
-    print("正在上傳檔案...")
+    print("\n%8s上傳檔案: " % " ")
     if update_drive_service_folder_id is None:
         file_metadata = {'name': update_drive_service_name}
     else:
@@ -88,7 +88,7 @@ def search_file(service, update_drive_service_name, is_delete_search_file=False)
                                    ).execute()
     items = results.get('files', [])
     if not items:
-        print('沒有發現你要找尋的 ' + update_drive_service_name + ' 檔案.')
+        print('%10s雲端中未發現「' % " " + update_drive_service_name + '」檔案.' )
     else:
         print('搜尋的檔案: ')
         for item in items:
@@ -127,7 +127,7 @@ def trashed_file(service, is_delete_trashed_file=False):
 
 def get_update_files_path_list(update_files_path):
     """
-    將上傳檔案的資料夾內的路徑以及名稱，全部放到list內
+    將上傳檔案的資料夾內的路徑以及名稱，全部放到 list 內
     :param update_files_path: 要上傳檔案的資料夾
     """
     UploadFilesPathList = []
@@ -137,7 +137,9 @@ def get_update_files_path_list(update_files_path):
             fullPath = join(root, f)
             UploadFilesPathList.append(fullPath)
             UploadFilesNameList.append(f)
-    print("取得要上傳的所有檔案路徑: \n%s" % '\n'.join(UploadFilesPathList))
+    print("%8s尋找本地檔案路徑: " % " ")
+    for i in UploadFilesPathList:
+        print("%10s" % " " + i)
     return UploadFilesNameList, UploadFilesPathList
 
 
@@ -165,7 +167,7 @@ def main(is_update_file_function=False, update_drive_service_folder_name=None, u
         if update_drive_service_name is None:  # 上傳資料夾內的所有檔案會跑這裡
             # print("上傳資料夾內，所有檔案")
             UploadFilesName, UploadFilesPath = get_update_files_path_list(update_files_path = update_file_path)
-            print("=====執行上傳檔案=====")
+            print("\n%8s比對重複檔案: " % " ")
             get_folder_id = search_folder(service = service, update_drive_folder_name = update_drive_service_folder_name)
             # print(UploadFilesPath)
             for UploadFileName in UploadFilesName:
@@ -179,7 +181,7 @@ def main(is_update_file_function=False, update_drive_service_folder_name=None, u
 
         else:  # 單純上傳一個檔案會跑這裡
             print(update_file_path + update_drive_service_name)
-            print("=====執行上傳檔案=====")
+            print("%8s比對重複檔案: " % " ")
             # 清空 雲端垃圾桶檔案
             # trashed_file(service=service, is_delete_trashed_file=True)
             get_folder_id = search_folder(service = service, update_drive_folder_name = update_drive_service_folder_name)
