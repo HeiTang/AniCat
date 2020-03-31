@@ -24,6 +24,7 @@
 ### Usage
 
 1. 建立 MySQL 資料庫
+  
   - 建立 Database
     ```
     cursor.execute("CREATE DATABASE Anime1_db")
