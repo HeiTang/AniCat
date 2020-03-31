@@ -143,8 +143,6 @@ def Download_mp4(url , download_path , Anime_Unit_title):
         f.write(r.content)
         f.flush()
         f.close()
-    
-    os.system('rm .DS_Store')
 
     if(r.status_code == 200):
         print("\033[11D\033[0m",end= "", flush= True )
@@ -258,35 +256,35 @@ if __name__ == '__main__':
     if not os.path.exists(download_path):
         os.mkdir(download_path)
 
-    # 主要
-    while True:
-        URL = []
-        ttitle = []
-        NextPage = str(False)
+    # # 主要
+    # while True:
+    #     URL = []
+    #     ttitle = []
+    #     NextPage = str(False)
         
-        # 回傳“子動漫標題(List)”、“子動漫URL(List)”
-        URL , ttitle = Anime_Groups(url_Anime)
-        # Loop 子動漫
-        for i in range(len(ttitle)):
-            print("%8s" % " "+ttitle[i] , end=" ", flush= True)
+    #     # 回傳“子動漫標題(List)”、“子動漫URL(List)”
+    #     URL , ttitle = Anime_Groups(url_Anime)
+    #     # Loop 子動漫
+    #     for i in range(len(ttitle)):
+    #         print("%8s" % " "+ttitle[i] , end=" ", flush= True)
             
-            URL[i] = Anime_Unit(URL[i])
-            if(URL[i].find(".m3u8") == -1):
-                print("\033[1;33mDownloading\033[0m",end= "", flush= True)  # 黃色下載中
-                Download_mp4(URL[i] , download_path , ttitle[i])
+    #         URL[i] = Anime_Unit(URL[i])
+    #         if(URL[i].find(".m3u8") == -1):
+    #             print("\033[1;33mDownloading\033[0m",end= "", flush= True)  # 黃色下載中
+    #             Download_mp4(URL[i] , download_path , ttitle[i])
                 
-            else:
-                print("\033[1;33mDownloading\033[0m",end= "", flush= True)  # 黃色下載中
-                Download_m3u8(URL[i] , download_path , ttitle[i])
+    #         else:
+    #             print("\033[1;33mDownloading\033[0m",end= "", flush= True)  # 黃色下載中
+    #             Download_m3u8(URL[i] , download_path , ttitle[i])
                 
                 
-        # 回傳“下頁狀態”、“下頁URL”
-        NextPage , url_Anime = Next_Page(url_Anime)
+    #     # 回傳“下頁狀態”、“下頁URL”
+    #     NextPage , url_Anime = Next_Page(url_Anime)
 
-        if(NextPage == str(False)):
-            break
+    #     if(NextPage == str(False)):
+    #         break
     
-    os.system('rm .DS_Store')
+    # os.system('rm .DS_Store')
 
     print("\n%8s[備份階段]" % " ")
     
