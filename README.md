@@ -25,14 +25,14 @@
 
 1. 建立 MySQL 資料庫
   
-  - 建立 Database
-    ```
-    cursor.execute("CREATE DATABASE Anime1_db")
-    ```
-  - 建立 Table
-    ```
-    cursor.execute("CREATE TABLE Anime1 (Name VARCHAR(255), ID INTEGER(99), Key_id INT AUTO_INCREMENT PRIMARY KEY)")
-    ```
+   - 建立 Database
+     ```
+     cursor.execute("CREATE DATABASE Anime1_db")
+     ```
+   - 建立 Table
+     ```
+     cursor.execute("CREATE TABLE Anime1 (Name VARCHAR(255), ID INTEGER(99), Key_id INT AUTO_INCREMENT PRIMARY KEY)")
+     ```
 
 2. 取得Google Drive API
 
