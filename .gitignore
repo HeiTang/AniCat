@@ -3,6 +3,7 @@
 Anime1_Download/
 credentials.json
 token.json
+/.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
