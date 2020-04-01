@@ -226,6 +226,8 @@ if __name__ == '__main__':
         #####################################
         ''')
 
+    # Mod1:Database.py #===============================================================================================#
+
     update_db = input("%8s\033[1;36mDo you want to update database ? (y/n) \033[0m" % " ")    
     if(update_db == "y"):
         Database.Search_Max_id()
@@ -234,9 +236,9 @@ if __name__ == '__main__':
     if(search_id == "y"):
         Database.Search_Anime1_id()
     
-    id = input("%8sEnter ID : " % " ")
+    # 核心:Anime1.py #=================================================================================================#
 
-    # id = 651
+    id = input("%8sEnter ID : " % " ")
 
     url_Anime = "https://anime1.me?cat="+str(id)
 
@@ -269,8 +271,7 @@ if __name__ == '__main__':
             URL[i] = Anime_Unit(URL[i])
             if(URL[i].find(".m3u8") == -1):
                 print("\033[1;33mDownloading\033[0m",end= "", flush= True)  # 黃色下載中
-                Download_mp4(URL[i] , download_path , ttitle[i])
-                
+                Download_mp4(URL[i] , download_path , ttitle[i]) 
             else:
                 print("\033[1;33mDownloading\033[0m",end= "", flush= True)  # 黃色下載中
                 Download_m3u8(URL[i] , download_path , ttitle[i])
@@ -282,5 +283,7 @@ if __name__ == '__main__':
             break
 
     print("\n%8s\033[0;30;42m[檢查階段]\033[0m" % " ")
+
+    # Mod2:Upload.py #================================================================================================#
     
     Upload.main(is_update_file_function=bool(True), update_drive_service_folder_name='Anime1', update_drive_service_name=None, update_file_path=download_path)
