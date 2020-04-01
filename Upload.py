@@ -26,7 +26,6 @@ def update_file(service, update_drive_service_name, local_file_path, update_driv
     :param local_file_path: 本地端的位置
     :param local_file_name: 本地端的檔案名稱
     """
-    print("\n%8s上傳檔案: " % " ")
     if update_drive_service_folder_id is None:
         file_metadata = {'name': update_drive_service_name}
     else:
@@ -39,11 +38,11 @@ def update_file(service, update_drive_service_name, local_file_path, update_driv
     start = time.time()
     file_id = service.files().create(body=file_metadata, media_body=media, fields='id').execute()
     end = time.time()
-    print("上傳檔案成功！")
-    print('雲端檔案名稱為: ' + str(file_metadata['name']))
-    print('雲端檔案ID為: ' + str(file_id['id']))
-    print('檔案大小為: ' + str(file_metadata_size) + ' byte')
-    print("上傳時間為: " + str(end-start))
+    # print("上傳檔案成功！")
+    print('%10sλ 雲端檔案名稱： ' % " " + str(file_metadata['name']))
+    print('%10sλ 雲端檔案 ID： ' % " " + str(file_id['id']))
+    print('%10sλ 檔案大小： ' % " " + str(file_metadata_size) + ' byte')
+    print("%10sλ 上傳時間： " % " " + str(end-start))
     print("\n")
 
     return file_metadata['name'], file_id['id']
@@ -174,6 +173,7 @@ def main(is_update_file_function=False, update_drive_service_folder_name=None, u
             #  搜尋要上傳的檔案名稱是否有在雲端上並且刪除
                 search_file(service = service, update_drive_service_name = UploadFileName, is_delete_search_file = True)
             # # 檔案上傳到雲端上
+            print("\n%8s上傳檔案: " % " ")
             for i in range(len(UploadFilesPath)):
                 update_file(service=service, update_drive_service_name=UploadFilesName[i],
                             local_file_path=UploadFilesPath[i], update_drive_service_folder_id=get_folder_id)
