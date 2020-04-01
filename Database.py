@@ -5,6 +5,7 @@ import requests , mysql.connector
 from bs4 import BeautifulSoup
 
 # Connect MySQL
+# 這個自己設定
 mydb = mysql.connector.connect(
   host = "127.0.0.1",    # DB 主機位置
   user = "root",         # DB 用戶名

@@ -44,3 +44,8 @@
 
 3. `pip3 install -r requirement.txt`
 
+4. `pip3 Anime1.py`
+
+### 注意
+資料庫的功能主要是紀錄動漫的名稱與其對應的 ID，例如：達爾文遊戲，ID 為 651。
+
