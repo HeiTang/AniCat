@@ -27,6 +27,8 @@ data = {
     "acpwd-pass": "anime1.me"
 }
 
+Cookies = None
+
 def Anime_title(url):
     r = requests.post(url,headers = headers,data = data)
     soup = BeautifulSoup(r.text, 'lxml')
@@ -124,7 +126,7 @@ def APIv2(formdata):
 
     url = "https://"+url_mp4
     # # .mp4 URL
-    # print(url , end = " ")  
+    # print(url)  
     return url
 
 def Download_mp4(url , download_path , Anime_Unit_title):
@@ -136,8 +138,10 @@ def Download_mp4(url , download_path , Anime_Unit_title):
         "dnt": '1',
         "user-agent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
     }
+    # print(Cookies)
 
     r = requests.get(url,headers = headers1,data = data)   
+    # print(r.status_code)
 
     with open(os.path.join(download_path,  Anime_Unit_title + ".mp4"), 'ab') as f:
         f.write(r.content)
